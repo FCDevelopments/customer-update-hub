@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Customer Update Hub
 
-## Getting Started
+A production-leaning starter for service businesses that need better customer communication during active work.
 
-First, run the development server:
+This project is designed around a common, monetizable operational pain:
+- customers asking for status repeatedly
+- advisors/coordinators forgetting to send updates
+- approvals getting delayed because communication is inconsistent
+- teams losing time to phone-tag and manual follow-ups
+
+## What this repo demonstrates
+
+- A modern Next.js + TypeScript vertical SaaS foundation
+- A workflow-oriented customer update dashboard
+- Clear separation between business logic and UI code
+- A structure that can evolve into a real multi-tenant communication platform
+
+## Features in this version
+
+- Interactive service job dashboard
+- Stage-based workflow progression
+- Customer-facing message preview by active stage
+- Timeline view of internal vs. external communication
+- Basic business impact metrics for the current job
+- Production-minded code organization
+
+## Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+Open:
+
+```bash
+http://localhost:3000
+```
+
+## Scripts
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+src/
+  app/
+    globals.css
+    layout.tsx
+    page.tsx
+  components/
+    operations-dashboard.tsx
+  lib/
+    workflow.ts
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Why this is a good business
 
-## Learn More
+This can become a real SaaS for:
+- dealership service departments
+- independent repair shops
+- field service teams
+- equipment maintenance businesses
+- home-service operators
 
-To learn more about Next.js, take a look at the following resources:
+The pain is simple and expensive: customers want updates, staff forget or get overloaded, and every missed update creates more inbound calls and more friction.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes for future engineers
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 1. Business logic is isolated
+`src/lib/workflow.ts` owns:
+- workflow stages
+- sample job record modeling
+- timeline interpretation
+- business value calculations
 
-## Deploy on Vercel
+That makes it easier to reuse the same logic in:
+- API routes
+- analytics jobs
+- message automation workers
+- future mobile views
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. Suggested next production steps
+To push this toward a real revenue-generating product:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- add auth and account management
+- persist jobs, customers, and message history in PostgreSQL
+- connect Twilio / email provider APIs
+- create workflow automation rules
+- add approval link flows
+- add role-based access for owners, managers, and staff
+- add webhook integrations for CRMs, DMSs, or field service platforms
+- store delivery and read-status events for reporting
+
+### 3. Strong next architecture
+A realistic next version would include:
+- PostgreSQL
+- Prisma or Drizzle ORM
+- Auth0 / Clerk / NextAuth
+- Twilio + SendGrid / Postmark
+- background jobs for scheduled reminders and follow-ups
+- audit logs for every outbound customer message
+
+## Production roadmap
+
+### Phase 1
+- Persist job records
+- Create message templates per stage
+- Add manual send + resend actions
+- Add account settings
+
+### Phase 2
+- Add automatic stage-triggered updates
+- Add approval request links
+- Add delivery status tracking
+- Add reporting dashboard
+
+### Phase 3
+- Integrate with dealership DMS or service platforms
+- Add AI message drafting
+- Add customer self-service portal
+- Add multi-location team management
+
+## License
+
+MIT
